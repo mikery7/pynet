@@ -1,0 +1,78 @@
+1. Python Libraries
+
+    c. Write a simple Python module that contains one function that prints 'hello' (module name = my_func.py). Do a test where you import my_func into a new Python script. Test this using the following contexts:
+        * my_func.py is located in the same directory as your script
+        * my_func.py is located in some random subdirectory (not the same directory as your script)
+        * my_func.py is located in ~/applied_python/lib/python2.7/site-packages/
+
+#
+# Located in same directory
+#
+
+applied_python)(applied_python)[mkery@ip-172-30-0-7 wk2]$ ls
+ex1a.txt  ex1b.txt  ex1c.txt  my_func.py  print_hello.py
+(applied_python)(applied_python)[mkery@ip-172-30-0-7 wk2]$ 
+(applied_python)(applied_python)[mkery@ip-172-30-0-7 wk2]$ cat print_hello.py 
+#!/usr/bin/env python
+
+from my_func import hello
+
+hello()
+(applied_python)(applied_python)[mkery@ip-172-30-0-7 wk2]$ cat my_func.py 
+#!/usr/bin/env python
+
+def hello():
+    print "Hello, world!"
+(applied_python)(applied_python)[mkery@ip-172-30-0-7 wk2]$ 
+(applied_python)(applied_python)[mkery@ip-172-30-0-7 wk2]$ 
+(applied_python)(applied_python)[mkery@ip-172-30-0-7 wk2]$ python print_hello.py 
+Hello, world!
+(applied_python)(applied_python)[mkery@ip-172-30-0-7 wk2]$ 
+
+
+#
+# Located in subdirectory 'subdir'
+#
+
+(applied_python)(applied_python)[mkery@ip-172-30-0-7 wk2]$ mkdir subdir
+(applied_python)(applied_python)[mkery@ip-172-30-0-7 wk2]$ mv my_func.py subdir/
+(applied_python)(applied_python)[mkery@ip-172-30-0-7 wk2]$ rm my_func.pyc 
+(applied_python)(applied_python)[mkery@ip-172-30-0-7 wk2]$
+applied_python)(applied_python)[mkery@ip-172-30-0-7 wk2]$ export PYTHONPATH=/home/mkery/git/pynet/wk2/subdir
+(applied_python)(applied_python)[mkery@ip-172-30-0-7 wk2]$ python
+Python 2.7.12 (default, Sep  1 2016, 22:14:00) 
+[GCC 4.8.3 20140911 (Red Hat 4.8.3-9)] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import sys
+>>> from pprint import pprint
+>>> 
+>>> pprint (sys.path)
+['',
+ '/home/mkery/git/pynet/wk2/subdir',
+ '/home/mkery/applied_python/local/lib64/python2.7/site-packages',
+ '/home/mkery/applied_python/local/lib/python2.7/site-packages',
+ '/home/mkery/applied_python/lib64/python2.7',
+ '/home/mkery/applied_python/lib/python2.7',
+ '/home/mkery/applied_python/lib64/python2.7/site-packages',
+ '/home/mkery/applied_python/lib/python2.7/site-packages',
+ '/home/mkery/applied_python/lib64/python2.7/lib-dynload',
+ '/usr/lib64/python2.7',
+ '/usr/lib/python2.7']
+>>> quit() 
+(applied_python)(applied_python)[mkery@ip-172-30-0-7 wk2]$ python print_hello.py
+Hello, world!
+(applied_python)(applied_python)[mkery@ip-172-30-0-7 wk2]$ 
+
+#
+# From 'site packages' within the virtual environment 'applied_python'
+#
+
+(applied_python)(applied_python)[mkery@ip-172-30-0-7 wk2]$ mv subdir/my_func.py ~/applied_python/lib/python2.7/site-packages/
+(applied_python)(applied_python)[mkery@ip-172-30-0-7 wk2]$ ls ~/applied_python/lib/python2.7/site-packages/ | grep my
+my_func.py
+(applied_python)(applied_python)[mkery@ip-172-30-0-7 wk2]$ rm -rf subdir/
+(applied_python)(applied_python)[mkery@ip-172-30-0-7 wk2]$ 
+(applied_python)(applied_python)[mkery@ip-172-30-0-7 wk2]$ python print_hello.py 
+Hello, world!
+(applied_python)(applied_python)[mkery@ip-172-30-0-7 wk2]$ 
+ 

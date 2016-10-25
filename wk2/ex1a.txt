@@ -1,0 +1,15 @@
+1. Python Libraries 
+
+    a. Make sure that you have PySNMP and Paramiko installed in the lab (i.e. enter the Python shell and test 'import pysnmp', and 'import paramiko').
+
+
+
+
+(applied_python)(applied_python)[mkery@ip-172-30-0-7 wk2]$ python
+Python 2.7.12 (default, Sep  1 2016, 22:14:00) 
+[GCC 4.8.3 20140911 (Red Hat 4.8.3-9)] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import pysnmp
+>>> import paramiko
+>>> 
+>>> 
